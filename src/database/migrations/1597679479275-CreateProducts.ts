@@ -19,6 +19,10 @@ export default class CreateProducts1597679479275 implements MigrationInterface {
             default: 'uuid_generate_v4()',
           },
           {
+            name: 'name',
+            type: 'varchar',
+          },
+          {
             name: 'description',
             type: 'varchar',
           },
@@ -27,8 +31,22 @@ export default class CreateProducts1597679479275 implements MigrationInterface {
             type: 'decimal(10, 2)',
           },
           {
+            name: 'promotion_price',
+            type: 'decimal(10, 2)',
+          },
+          {
+            name: 'blocked',
+            type: 'boolean',
+            default: false,
+          },
+          {
+            name: 'logo',
+            type: 'varchar',
+          },
+          {
             name: 'category_id',
             type: 'uuid',
+            isNullable: true,
           },
           {
             name: 'created_at',

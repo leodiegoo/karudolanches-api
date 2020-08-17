@@ -5,12 +5,12 @@ import {
   TableForeignKey,
 } from 'typeorm';
 
-export default class CreateAdditions1597678429002
+export default class CreateCategoryAdditions1597693830711
   implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'additions',
+        name: 'category_additions',
         columns: [
           {
             name: 'id',
@@ -20,12 +20,23 @@ export default class CreateAdditions1597678429002
             default: 'uuid_generate_v4()',
           },
           {
-            name: 'price',
-            type: 'decimal(10, 2)',
+            name: 'category_id',
+            type: 'uuid',
+            isNullable: true,
           },
           {
-            name: 'ingredient_id',
-            type: 'uuid',
+            name: 'description',
+            type: 'varchar',
+            isNullable: false,
+          },
+          {
+            name: 'quantity',
+            type: 'int',
+          },
+          {
+            name: 'blocked',
+            type: 'boolean',
+            default: false,
           },
           {
             name: 'created_at',
@@ -42,12 +53,12 @@ export default class CreateAdditions1597678429002
     );
 
     await queryRunner.createForeignKey(
-      'additions',
+      'category_additions',
       new TableForeignKey({
-        name: 'AdditionIngredient',
-        columnNames: ['ingredient_id'],
+        name: 'CategoryAdditionsCategory',
+        columnNames: ['category_id'],
         referencedColumnNames: ['id'],
-        referencedTableName: 'ingredients',
+        referencedTableName: 'categories',
         onDelete: 'SET NULL',
         onUpdate: 'CASCADE',
       }),
@@ -55,7 +66,6 @@ export default class CreateAdditions1597678429002
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey('additions', 'AdditionIngredient');
-    await queryRunner.dropTable('additions');
+    await queryRunner.dropTable('category_additions');
   }
 }

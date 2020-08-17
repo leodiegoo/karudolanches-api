@@ -5,12 +5,12 @@ import {
   TableForeignKey,
 } from 'typeorm';
 
-export default class CreateProductIngredients1597679783907
+export default class CreateCategoryAdditionsOptionals1597694112276
   implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'product_ingredients',
+        name: 'category_addition_optionals',
         columns: [
           {
             name: 'id',
@@ -20,12 +20,22 @@ export default class CreateProductIngredients1597679783907
             default: 'uuid_generate_v4()',
           },
           {
-            name: 'product_id',
+            name: 'category_addition_id',
             type: 'uuid',
+            isNullable: true,
           },
           {
-            name: 'ingredient_id',
-            type: 'uuid',
+            name: 'price',
+            type: 'decimal(10, 2)',
+          },
+          {
+            name: 'description',
+            type: 'varchar',
+          },
+          {
+            name: 'blocked',
+            type: 'boolean',
+            default: false,
           },
           {
             name: 'created_at',
@@ -42,24 +52,12 @@ export default class CreateProductIngredients1597679783907
     );
 
     await queryRunner.createForeignKey(
-      'product_ingredients',
+      'category_addition_optionals',
       new TableForeignKey({
-        name: 'ProductIngredientsProduct',
-        columnNames: ['product_id'],
+        name: 'CategoryAdditionOptionalCategoryAddition',
+        columnNames: ['category_addition_id'],
         referencedColumnNames: ['id'],
-        referencedTableName: 'products',
-        onDelete: 'SET NULL',
-        onUpdate: 'CASCADE',
-      }),
-    );
-
-    await queryRunner.createForeignKey(
-      'product_ingredients',
-      new TableForeignKey({
-        name: 'ProductIngredientsIngredient',
-        columnNames: ['ingredient_id'],
-        referencedColumnNames: ['id'],
-        referencedTableName: 'ingredients',
+        referencedTableName: 'category_additions',
         onDelete: 'SET NULL',
         onUpdate: 'CASCADE',
       }),
@@ -68,13 +66,9 @@ export default class CreateProductIngredients1597679783907
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.dropForeignKey(
-      'product_ingredients',
-      'ProductIngredientsProduct',
+      'category_addition_optionals',
+      'CategoryAdditionOptionalCategoryAddition',
     );
-    await queryRunner.dropForeignKey(
-      'product_ingredients',
-      'ProductIngredientsIngredient',
-    );
-    await queryRunner.dropTable('products');
+    await queryRunner.dropTable('category_addition_optionals');
   }
 }

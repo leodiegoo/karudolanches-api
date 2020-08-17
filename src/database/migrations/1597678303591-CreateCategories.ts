@@ -20,6 +20,11 @@ export default class CreateCategories1597678303591
             isNullable: false,
           },
           {
+            name: 'blocked',
+            type: 'boolean',
+            default: false,
+          },
+          {
             name: 'created_at',
             type: 'timestamp',
             default: 'now()',
