@@ -14,6 +14,9 @@ class Category {
   @Column()
   description: string;
 
+  @Column('boolean')
+  blocked: boolean;
+
   @CreateDateColumn()
   created_at: Date;
 

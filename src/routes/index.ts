@@ -1,9 +1,11 @@
 import { Router } from 'express';
 
+import usersRouter from './users.routes';
+import categoriesRouter from './categories.routes';
+
 const routes = Router();
 
-routes.get('/', (req, res) => {
-  res.json({ message: 'Hello World!' });
-});
+routes.use('/users', usersRouter);
+routes.use('/categories', categoriesRouter);
 
 export default routes;

@@ -9,28 +9,16 @@ import {
 } from 'typeorm';
 import Category from './Category';
 
-@Entity('products')
-class Product {
+@Entity('category_additions')
+class CategoryAddition {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column()
-  name: string;
-
-  @Column()
   description: string;
 
-  @Column('decimal')
-  price: number;
-
-  @Column('decimal')
-  promotion_price: number;
-
-  @Column('boolean')
-  blocked: boolean;
-
   @Column()
-  logo: string;
+  quantity: number;
 
   @Column()
   category_id: string;
@@ -39,6 +27,9 @@ class Product {
   @JoinColumn({ name: 'category_id' })
   category: Category;
 
+  @Column('boolean')
+  blocked: boolean;
+
   @CreateDateColumn()
   created_at: Date;
 
@@ -46,4 +37,4 @@ class Product {
   updated_at: Date;
 }
 
-export default Product;
+export default CategoryAddition;
