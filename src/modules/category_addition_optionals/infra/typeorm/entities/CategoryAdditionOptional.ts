@@ -7,7 +7,7 @@ import {
   ManyToOne,
   JoinColumn,
 } from 'typeorm';
-import CategoryAddition from './CategoryAddition';
+import CategoryAddition from '@modules/category_additions/infra/typeorm/entities/CategoryAddition';
 
 @Entity('category_addition_optionals')
 class CategoryAdditionOptional {
