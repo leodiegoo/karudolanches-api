@@ -25,6 +25,7 @@ export default class CreateProducts1597679479275 implements MigrationInterface {
           {
             name: 'description',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'price',
@@ -33,6 +34,7 @@ export default class CreateProducts1597679479275 implements MigrationInterface {
           {
             name: 'promotion_price',
             type: 'decimal(10, 2)',
+            isNullable: true,
           },
           {
             name: 'blocked',
@@ -42,6 +44,7 @@ export default class CreateProducts1597679479275 implements MigrationInterface {
           {
             name: 'logo',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'category_id',

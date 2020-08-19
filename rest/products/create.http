@@ -1,0 +1,8 @@
+POST http://localhost:3333/products
+Content-Type: application/json
+
+{
+  "name": "Dogão",
+  "price": 13.5,
+  "category_id": "b048b5a8-9633-4128-807b-b4049ebbe838"
+}
