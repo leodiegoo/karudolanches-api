@@ -6,6 +6,9 @@ import UsersRepository from '@modules/users/infra/typeorm/repositories/UsersRepo
 import ICategoriesRepository from '@modules/categories/repositories/ICategoriesRepository';
 import CategoriesRepository from '@modules/categories/infra/typeorm/repositories/CategoriesRepository';
 
+import ICategoryAdditionsRepository from '@modules/category_additions/repositories/ICategoryAdditionsRepository';
+import CategoryAdditionsRepository from '@modules/category_additions/infra/typeorm/repositories/CategoryAdditionsRepository';
+
 container.registerSingleton<IUsersRepository>(
   'UsersRepository',
   UsersRepository,
@@ -14,4 +17,9 @@ container.registerSingleton<IUsersRepository>(
 container.registerSingleton<ICategoriesRepository>(
   'CategoriesRepository',
   CategoriesRepository,
+);
+
+container.registerSingleton<ICategoryAdditionsRepository>(
+  'CategoryAdditionsRepository',
+  CategoryAdditionsRepository,
 );
