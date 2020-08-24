@@ -10,6 +10,8 @@ import routes from './routes';
 import '@shared/infra/typeorm';
 import '@shared/container';
 
+require('dotenv/config');
+
 const app = express();
 
 app.use(cors());
@@ -32,6 +34,8 @@ app.use((err: Error, req: Request, res: Response, _: NextFunction) => {
   });
 });
 
-app.listen(80, () => {
-  console.log('🎧  on 3333');
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, () => {
+  console.log(`🎧  on ${PORT}`);
 });
