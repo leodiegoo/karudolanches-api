@@ -1,10 +1,11 @@
 {
+  "name": "default",
   "type": "postgres",
-  "host": "localhost",
-  "port": 5432,
-  "username": "postgres",
-  "password": "postgres",
-  "database": "karudolanches",
+  "host": "ec2-184-73-249-9.compute-1.amazonaws.com",
+  "port": "5432",
+  "username": "dbavefiptcjfic",
+  "password": "33a7f2c2d4d509f1f42540382db7f8462a07e14ed7e236d61c9bd4b8796a4ed3",
+  "database": "d1lin7sn8o63ll",
   "entities": [
     "./src/modules/**/infra/typeorm/entities/*.ts"
   ],
@@ -13,5 +14,8 @@
   ],
   "cli": {
     "migrationsDir": "./src/shared/infra/typeorm/migrations/*.ts"
+  },
+  "extra": {
+    "ssl": false
   }
 }
