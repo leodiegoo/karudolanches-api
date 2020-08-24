@@ -32,6 +32,6 @@ app.use((err: Error, req: Request, res: Response, _: NextFunction) => {
   });
 });
 
-app.listen(3333, () => {
+app.listen(80, () => {
   console.log('🎧  on 3333');
 });
