@@ -1,8 +1,20 @@
 const tsConfig = require('./tsconfig.json');
 const tsConfigPaths = require('tsconfig-paths');
 
-const baseUrl = './dist'; // Either absolute or relative path. If relative it's resolved to current working directory.
+const paths = tsConfig.compilerOptions.paths;
+
 tsConfigPaths.register({
-  baseUrl,
-  paths: tsConfig.compilerOptions.paths,
+  baseUrl: tsConfig.compilerOptions.outDir,
+  paths: Object.keys(paths).reduce(
+    (agg, key) => ({
+      ...agg,
+      [key]: paths[key].map(p =>
+        p.replace(
+          tsConfig.compilerOptions.baseUrl,
+          tsConfig.compilerOptions.outDir,
+        ),
+      ),
+    }),
+    {},
+  ),
 });
